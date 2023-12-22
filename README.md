@@ -2,7 +2,7 @@
 
 To sum any number
 
-[![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/brtmvdl/calc/github-release.yml?label=GitHub%20Actions&link=https%3A%2F%2Fgithub.com%2Fbrtmvdl%2Fcalc%2Factions%2Fworkflows%2Fgithub-release.yml)](https://github.com/brtmvdl/calc/actions/workflows/github-release.yml) [![Docker push](https://img.shields.io/github/actions/workflow/status/brtmvdl/calc/docker-push.yml?label=Docker%20push&link=https%3A%2F%2Fgithub.com%2Fbrtmvdl%2Fcalc%2Factions%2Fworkflows%2Fdocker-push.yml)](https://github.com/brtmvdl/calc/ actions/workflows/docker-push.yml) [![github/stars](https://img.shields.io/github/stars/brtmvdl/calc?style=social)](https://img.shields.io/github/stars/brtmvdl/calc?style=social) 
+[![github release](https://img.shields.io/github/deployments/brtmvdl/calc/github-release.yml)](https://github.com/brtmvdl/calc/blob/main/.github/workflows/github-release.yml) [![docker push](https://img.shields.io/github/deployments/brtmvdl/calc/docker-push.yml)](https://github.com/brtmvdl/calc/blob/main/.github/workflows/docker-push.yml) [![github/stars](https://img.shields.io/github/stars/brtmvdl/calc?style=social)](https://img.shields.io/github/stars/brtmvdl/calc?style=social) 
 
 ## social & donate
 
