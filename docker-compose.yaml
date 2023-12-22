@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+
+  app:
+    image: 'tmvdl/projects:flet'
+    build: './src/app'
+    volumes:
+      - './src/app:/app'
