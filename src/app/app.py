@@ -12,7 +12,7 @@ def text_button(str, callback):
   return ft.TextButton(str, on_click=on_click)
 
 def backspace(str):
-  filtered = [s for s, ix in str if ix != len(str) - 1]
+  filtered = [s for s, ix in list(str) if ix != len(str) - 1]
 
   return filtered.join('')
 
