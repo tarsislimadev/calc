@@ -7,7 +7,7 @@ def main(page: ft.Page):
 
   def write(text):
     print("write: " + text)
-    text_field.value = text
+    text_field.value = str(text)
     page.update()
 
   page.on_keyboard_event = lambda e: write(e.key)
