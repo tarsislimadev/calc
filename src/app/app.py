@@ -18,22 +18,22 @@ def main(page: ft.Page):
 
     page.update()
 
+  def text_button(str):
+    def on_click(e):
+      if (str == "<"):
+        write("Backspace")
+      elif (str == ">"):
+        write("Enter")
+      else:
+        write(str)
+
+    return ft.TextButton(str, on_click=on_click)
+
   page.on_keyboard_event = lambda e: write(e.key)
-
   page.add(ft.Row([text_field]))
-  page.add(ft.Row([text_button("7", write), text_button("8", write), text_button("9", write)]))
-  page.add(ft.Row([text_button("4", write), text_button("5", write), text_button("6", write)]))
-  page.add(ft.Row([text_button("1", write), text_button("2", write), text_button("3", write)]))
-  page.add(ft.Row([text_button("<", write), text_button("0", write), text_button(">", write)]))
-
-def text_button(str, callback):
-  def on_click(e):
-    if (str == "<"):
-      callback("Backspace")
-    elif (str == ">"):
-      callback("Enter")
-    else:
-      callback(str)
-  return ft.TextButton(str, on_click=on_click)
+  page.add(ft.Row([text_button("7"), text_button("8"), text_button("9")]))
+  page.add(ft.Row([text_button("4"), text_button("5"), text_button("6")]))
+  page.add(ft.Row([text_button("1"), text_button("2"), text_button("3")]))
+  page.add(ft.Row([text_button("<"), text_button("0"), text_button(">")]))
 
 ft.app(target=main)
