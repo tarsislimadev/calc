@@ -12,8 +12,8 @@ def text_button(str, callback):
   return ft.TextButton(str, on_click=on_click)
 
 def backspace(str):
-  splited = str.split('')
-  filtered = [s for s, ix in splited if ix != len(splited) - 1]
+  filtered = [s for s, ix in str if ix != len(str) - 1]
+
   return filtered.join('')
 
 def enter(str):
@@ -21,7 +21,7 @@ def enter(str):
 
 def main(page: ft.Page):
   page.title = 'Calc app'
-  text_field = ft.TextField(value='', text_align=ft.TextAlign.RIGHT)
+  text_field = ft.TextField()
 
   def write(str):
     match str.replace('Numpad ', ''):
