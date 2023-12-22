@@ -7,7 +7,11 @@ def main(page: ft.Page):
 
   def write(text):
     print("write: " + text)
-    text_field.value = text_field.value + str(text)
+    match(str(text).replace("Numpad ", "")):
+      case ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]:
+        text_field.value = text_field.value + str(text)
+      case ["Backspace", "Enter"]:
+        text_field.value = ""
     page.update()
 
   page.on_keyboard_event = lambda e: write(e.key)
