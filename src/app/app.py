@@ -1,39 +1,37 @@
 import flet as ft
 
-def main(page: ft.Page):
-  page.title = "Calc app"
-  page.bgcolor = ft.colors.BLUE_50
+class CalcApp(ft.Page):
+  def __init__(self):
+    self.title = "Calc app"
+    self.text_field = ft.Text("", size=100)
+    self.on_keyboard_event = lambda e: self.write(e.key)
 
-  text_field = ft.Text("", size=100)
+    self.add(ft.Row([self.text_field]))
+    self.add(ft.Row([self.text_button("7"), self.text_button("8"), self.text_button("9")]))
+    self.add(ft.Row([self.text_button("4"), self.text_button("5"), self.text_button("6")]))
+    self.add(ft.Row([self.text_button("1"), self.text_button("2"), self.text_button("3")]))
+    self.add(ft.Row([self.text_button("<"), self.text_button("0"), self.text_button(">")]))
 
-  def write(str):
+  def text_button(self, str):
+    def on_click(e):
+      if (str == "<"):
+        self.write("Backspace")
+      elif (str == ">"):
+        self.write("Enter")
+      else:
+        self.write(str)
+
+    return ft.TextButton(str, on_click=on_click)
+
+  def write(self, str):
     print("write: " + str)
     match str.replace("Numpad ", ""):
       case ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]:
-        text_field.value = text_field.value + str
+        self.text_field.value = self.text_field.value + str
       case "Backspace":
-        print("backspace: " + text_field.value)
+        print("backspace: " + self.text_field.value)
       case "Enter":
-        print("enter: " + text_field.value)
-    page.update()
+        print("enter: " + self.text_field.value)
+    self.update()
 
-  page.on_keyboard_event = lambda e: write(e.key)
-
-  page.add(ft.Row([text_field]))
-  page.add(ft.Row([text_button("7", write), text_button("8", write), text_button("9", write)]))
-  page.add(ft.Row([text_button("4", write), text_button("5", write), text_button("6", write)]))
-  page.add(ft.Row([text_button("1", write), text_button("2", write), text_button("3", write)]))
-  page.add(ft.Row([text_button("<", write), text_button("0", write), text_button(">", write)]))
-
-def text_button(str, callback):
-  def on_click(e):
-    if (str == "<"):
-      callback("Backspace")
-    elif (str == ">"):
-      callback("Enter")
-    else:
-      callback(str)
-
-  return ft.TextButton(str, on_click=on_click)
-
-ft.app(target=main)
+ft.app(target=CalcApp)
