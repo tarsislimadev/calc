@@ -3,11 +3,11 @@ import flet as ft
 def main(page: ft.Page):
   page.title = "Calc app"
   page.bgcolor = ft.colors.BLUE_50
-  text_field = ft.Text("")
+  text_field = ft.Text("", color = ft.colors.BLACK, bgcolor = ft.colors.WHITE)
 
   def write(text):
     print("write: " + text)
-    text_field.value = str(text)
+    text_field.value = text_field.value + str(text)
     page.update()
 
   page.on_keyboard_event = lambda e: write(e.key)
