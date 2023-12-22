@@ -7,13 +7,7 @@ def main(page: ft.Page):
 
   def write(text):
     print("text: " + text)
-
-    match(text):
-      case ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]:
-        text_field.value = text_field.value + text
-      case ["Backspace", "Enter"]:
-        text_field.value = ""
-
+    text_field.value = text_field.value + text
     page.update()
 
   def text_button(text):
