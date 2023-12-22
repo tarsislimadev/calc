@@ -25,6 +25,8 @@ def main(page: ft.Page):
   text_field.read_only = True
 
   def write(str):
+    print("str: " + str)
+
     match str.replace('Numpad ', ''):
       case ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']:
         text_field.value = text_field.value + str
