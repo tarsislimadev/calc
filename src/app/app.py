@@ -1,16 +1,5 @@
 import flet as ft
 
-def text_button(str, callback):
-  def on_click(e):
-    if (str == "<"):
-      callback("Backspace")
-    elif (str == ">"):
-      callback("Enter")
-    else:
-      callback(str)
-
-  return ft.TextButton(str, on_click=on_click)
-
 def main(page: ft.Page):
   page.title = "Calc app"
   page.bgcolor = ft.colors.BLUE_50
@@ -35,5 +24,16 @@ def main(page: ft.Page):
   page.add(ft.Row([text_button("4", write), text_button("5", write), text_button("6", write)]))
   page.add(ft.Row([text_button("1", write), text_button("2", write), text_button("3", write)]))
   page.add(ft.Row([text_button("<", write), text_button("0", write), text_button(">", write)]))
+
+def text_button(str, callback):
+  def on_click(e):
+    if (str == "<"):
+      callback("Backspace")
+    elif (str == ">"):
+      callback("Enter")
+    else:
+      callback(str)
+
+  return ft.TextButton(str, on_click=on_click)
 
 ft.app(target=main)
