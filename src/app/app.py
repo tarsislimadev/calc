@@ -5,16 +5,9 @@ def main(page: ft.Page):
   page.bgcolor = ft.colors.BLUE_50
   text_field = ft.Text("")
 
-  def write(str):
-    print("write: " + str)
-
-    match str.replace("Numpad ", ""):
-      case ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]:
-        text_field.value = text_field.value + str
-      case "Backspace":
-        print("backspace: " + text_field.value)
-      case "Enter":
-        print("enter: " + text_field.value)
+  def write(text):
+    print("write: " + text)
+    text_field.value = text
     page.update()
 
   page.on_keyboard_event = lambda e: write(e.key)
@@ -33,7 +26,6 @@ def text_button(str, callback):
       callback("Enter")
     else:
       callback(str)
-
   return ft.TextButton(str, on_click=on_click)
 
 ft.app(target=main)
