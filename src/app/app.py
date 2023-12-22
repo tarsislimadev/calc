@@ -1,7 +1,7 @@
 import flet as ft
 
 class CalcApp(ft.Page):
-  def __init__(self):
+  def __init__(self, _):
     self.title = "Calc app"
     self.text_field = ft.Text("", size=100)
     self.on_keyboard_event = lambda e: self.write(e.key)
