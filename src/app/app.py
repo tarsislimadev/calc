@@ -2,8 +2,8 @@ import flet as ft
 
 def main(page: ft.Page):
   page.title = "Calc app"
-  page.bgcolor = ft.colors.BLUE_50
-  text_field = ft.Text("", color = ft.colors.BLACK, bgcolor = ft.colors.WHITE)
+  page.bgcolor = ft.colors.WHITE
+  text_field = ft.Text("", color = ft.colors.BLACK)
 
   def write(text):
     print("write: " + text)
