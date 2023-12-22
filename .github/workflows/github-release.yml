@@ -1,0 +1,29 @@
+name: GitHub release
+
+on:
+  schedule:
+    - cron: '50 23 * * *'
+  push:
+    branches:
+      - 'main'
+  workflow_dispatch:
+
+jobs:
+  artifacts:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Check out
+        uses: actions/checkout@v3
+
+      - name: Docker build
+        run: docker-compose build
+
+      - name: Export app
+        run: docker run -v $(pwd)/dist:/dist tmvdl/projects:flet cp -rfv ./dist/app /dist
+
+      - name: Create release
+        run: gh release create v$( date +%Y%m%d%H%M ) ./dist/app
+        env:
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
