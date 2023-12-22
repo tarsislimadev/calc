@@ -13,25 +13,17 @@ def text_button(str, callback):
 
 def main(page: ft.Page):
   page.title = 'Calc app'
-
-  text_field = ft.TextField()
-  text_field.read_only = True
-
-  def backspace(str):
-    return str
-
-  def enter(str):
-    return str
+  text_field = ft.Text('', size=100)
 
   def write(str):
-    print("write: " + str)
+    print('write: ' + str)
     match str.replace('Numpad ', ''):
       case ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']:
         text_field.value = text_field.value + str
       case 'Backspace':
-        text_field.value = backspace(text_field.value)
+        print('backspace: ' + text_field.value)
       case 'Enter':
-        text_field.value = enter(text_field.value)
+        print('enter: ' + text_field.value)
     page.update()
 
   page.on_keyboard_event = lambda e: write(e.key)
