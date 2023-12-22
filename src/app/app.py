@@ -6,6 +6,8 @@ def main(page: ft.Page):
   text_field = ft.Text("", color = ft.colors.BLACK)
 
   def write(text):
+    print("text: " + text)
+
     match(text):
       case ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]:
         text_field.value = text_field.value + text
