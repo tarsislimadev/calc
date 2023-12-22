@@ -6,28 +6,24 @@ def main(page: ft.Page):
   text_field = ft.Text("", color = ft.colors.BLACK)
 
   def write(text):
-    text_string = str(text).replace("Numpad ", "")
-
-    print("text_string: " + text_string)
-
-    match(text_string):
+    match(text):
       case ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]:
-        text_field.value = text_field.value + text_string
+        text_field.value = text_field.value + text
       case ["Backspace", "Enter"]:
         text_field.value = ""
 
     page.update()
 
-  def text_button(str):
+  def text_button(text):
     def on_click(e):
-      if (str == "<"):
+      if (text == "<"):
         write("Backspace")
-      elif (str == ">"):
+      elif (text == ">"):
         write("Enter")
       else:
-        write(str)
+        write(text.replace("Numpad ", ""))
 
-    return ft.TextButton(str, on_click=on_click)
+    return ft.TextButton(text, on_click=on_click)
 
   page.on_keyboard_event = lambda e: write(e.key)
   page.add(ft.Row([text_field]))
