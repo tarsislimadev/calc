@@ -11,22 +11,20 @@ def text_button(str, callback):
 
   return ft.TextButton(str, on_click=on_click)
 
-def backspace(str):
-  filtered = [s for s, ix in list(str) if ix != len(str) - 1]
-
-  return filtered.join('')
-
-def enter(str):
-  return str
-
 def main(page: ft.Page):
   page.title = 'Calc app'
+
   text_field = ft.TextField()
   text_field.read_only = True
 
-  def write(str):
-    print("str: " + str)
+  def backspace(str):
+    return str
 
+  def enter(str):
+    return str
+
+  def write(str):
+    print("write: " + str)
     match str.replace('Numpad ', ''):
       case ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']:
         text_field.value = text_field.value + str
