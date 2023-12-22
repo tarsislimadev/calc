@@ -22,6 +22,7 @@ def enter(str):
 def main(page: ft.Page):
   page.title = 'Calc app'
   text_field = ft.TextField()
+  text_field.read_only = True
 
   def write(str):
     match str.replace('Numpad ', ''):
@@ -33,10 +34,7 @@ def main(page: ft.Page):
         text_field.value = enter(text_field.value)
     page.update()
 
-  def on_keyboard(e: ft.KeyboardEvent):
-    write(e.key)
-
-  page.on_keyboard_event = on_keyboard
+  page.on_keyboard_event = lambda e: write(e.key)
 
   page.add(ft.Row([text_field]))
   page.add(ft.Row([text_button('7', write), text_button('8', write), text_button('9', write)]))
