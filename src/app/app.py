@@ -1,7 +1,7 @@
 import flet as ft
 
 def text_button(str, callback):
-  def on_click():
+  def on_click(e):
     callback(str)
 
   return ft.TextButton(str, on_click=on_click)
