@@ -17,6 +17,12 @@ jobs:
       - name: Check out
         uses: actions/checkout@v3
 
+      - name: Docker login
+        uses: docker/login-action@v1 
+        with:
+          username: tmvdl
+          password: ${{ secrets.GITHUBDOCKER }}
+
       - name: Docker build
         run: docker-compose build
 
