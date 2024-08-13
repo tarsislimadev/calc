@@ -1,4 +1,4 @@
-name: Docker Pull
+name: docker pull
 
 on:
   schedule:
@@ -9,5 +9,5 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      - name: Push
+      - name: docker pull
         run: docker pull tmvdl/projects -a
