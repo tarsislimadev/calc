@@ -3,9 +3,6 @@ name: gh release create
 on:
   schedule:
     - cron: '50 23 * * *'
-  push:
-    branches:
-      - 'main'
   workflow_dispatch:
 
 jobs:
@@ -22,6 +19,9 @@ jobs:
         with:
           username: tmvdl
           password: ${{ secrets.GITHUBDOCKER }}
+
+      - name: Install Docker Compose
+        run: sudo apt install -y docker-compose
 
       - name: Docker build
         run: docker-compose build
