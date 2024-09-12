@@ -1,12 +1,10 @@
-name: gh release create
+name: GitHub release
 
 on:
-  schedule:
-    - cron: '50 23 * * *'
   workflow_dispatch:
 
 jobs:
-  artifacts:
+  release:
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
