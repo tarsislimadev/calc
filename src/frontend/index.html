@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>calc</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script type="module">
+    import { HTML, nH1, nFlex, nButton } from '../../assets/js/libs/afrontend/index.js'
+
+    const app = HTML.fromId('app')
+
+    const title = new nH1()
+    title.setText('Calc')
+    app.append(title)
+
+    const calc = new HTML()
+    calc.setStyle('font-size', '3rem')
+    app.append(calc)
+
+    const buttonsEl = new HTML()
+    app.append(buttonsEl)
+
+    const randomNumber = (num = 1) => Math.floor((Math.random() * num))
+
+    const newCalc = () => {
+      const numb = randomNumber(100)
+
+      const firstPart = randomNumber(100)
+      const secondPart = numb - firstPart
+
+      calc.setText(`${firstPart} + ${secondPart}`)
+
+      buttonsEl.clear()
+
+      const nums = Array.from(Array(4)).map(() => randomNumber(10))
+
+      console.log([numb, numb - nums[0], numb + nums[1], numb + nums[2], numb - nums[3]]
+        .sort((a, b) => randomNumber(2) == 0 ? (a - b) : (b - a))
+        .map((n) => {
+          const buttonEl = new nButton()
+          buttonEl.setText(n)
+          buttonEl.setStyle('width', '100%')
+          buttonEl.setStyle('font-size', '2rem')
+          buttonEl.setStyle('padding', 'calc(1rem / 2)')
+          buttonEl.setStyle('margin-bottom', 'calc(1rem / 1)')
+          buttonEl.addEventListener('click', () => {
+            if (firstPart + secondPart === n) {
+              buttonEl.setStyle('background-color', '#000000')
+              buttonEl.setStyle('color', '#ffffff')
+            } else {
+              buttonEl.setStyle('background-color', '#ffffff')
+              buttonEl.setStyle('color', '#000000')
+            }
+
+            setTimeout(() => newCalc(), 1000)
+          })
+          buttonsEl.append(buttonEl)
+          return n
+        }))
+
+      console.log({ numb, firstPart, secondPart })
+    }
+
+    newCalc()
+
+  </script>
+
+</body>
+
+</html>
